@@ -55,4 +55,39 @@ add_filter('woocommerce_rest_check_permissions', function($permission = false, $
  }
  return $permission;
 }, 10, 6);
+```
 
+## Usage
+
+### Run the AI assistant:
+
+`` python wootest.py ``
+
+
+### Example interaction:
+```
+ AI Product Assistant Ready!
+
+ You: What is the price of Sample Product?
+ AI: Sample Product costs $49.99.
+```
+
+Type exit or quit to end the assistant.
+
+## How it Works
+
+- Fetches product data from WooCommerce API (name, price, short_description).
+
+- Builds a context string with all products.
+
+- Passes context + user question to LangChain prompt.
+
+- Returns AI-generated answers using Gemini LLM.
+
+## Notes
+
+- Only works on stores with WooCommerce REST API enabled.
+
+- For local development, make sure API access is allowed (see WooCommerce 401 fixes if needed).
+
+- This is a terminal-based assistant; you can extend it to web apps or chatbots.
