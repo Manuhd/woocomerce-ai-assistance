@@ -23,13 +23,13 @@ A Python-based AI assistant that fetches product data from a WooCommerce store a
 
 ---
 
-## Setup
-# 1 Install dependencies:
+# Setup
+## 1 Install dependencies:
 `pip install -r requirements.txt`
 
 
 
-# 2 Create a .env file in the root:
+## 2 Create a .env file in the root:
 
 - GOOGLE_API_KEY=your_google_api_key
 - WP_API_URL=http://ecomerce-agentic-ai.local/wp-json/wc/v3/products (add your local URL)
