@@ -32,7 +32,7 @@ A Python-based AI assistant that fetches product data from a WooCommerce store a
 # 2 Create a .env file in the root:
 
 - GOOGLE_API_KEY=your_google_api_key
-- WP_API_URL=http://ecomerce-agentic-ai.local/wp-json/wc/v3/products
+- WP_API_URL=http://ecomerce-agentic-ai.local/wp-json/wc/v3/products (add your local URL)
 - WC_CONSUMER_KEY=ck_your_consumer_key
 - WC_CONSUMER_SECRET=cs_your_consumer_secret
 
