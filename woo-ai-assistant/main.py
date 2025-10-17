@@ -27,7 +27,7 @@ def fetch_products():
         ])
         return context
     except Exception as e:
-        print("❌ Error fetching products:", e)
+        print(" Error fetching products:", e)
         return ""
 
 # Create prompt template
@@ -47,16 +47,17 @@ chain = LLMChain(prompt=prompt, llm=llm)
 
 # Run assistant
 def run_assistant():
-    print("🛒 AI Product Assistant Ready!\n")
+    print(" AI Product Assistant Ready!\n")
     context = fetch_products()
 
     while True:
-        question = input("👤 You: ")
+        question = input("You: ")
         if question.lower() in ["exit", "quit"]:
-            print("👋 Goodbye!")
+            print("Goodbye!")
             break
         response = chain.run({"context": context, "question": question})
-        print("\n🤖 AI:", response, "\n")
+        print("\n AI:", response, "\n")
 
 if __name__ == "__main__":
     run_assistant()
+
