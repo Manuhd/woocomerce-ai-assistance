@@ -25,7 +25,9 @@ A Python-based AI assistant that fetches product data from a WooCommerce store a
 
 # Setup
 ## 1 Install dependencies:
-`pip install -r requirements.txt`
+```
+pip install langchain langchain-community langchain-google-genai google-generativeai python-dotenv
+```
 
 
 
