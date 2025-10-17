@@ -31,9 +31,28 @@ A Python-based AI assistant that fetches product data from a WooCommerce store a
 
 ## 2 Create a .env file in the root:
 
-- GOOGLE_API_KEY=your_google_api_key
-- WP_API_URL=http://ecomerce-agentic-ai.local/wp-json/wc/v3/products (add your local URL)
-- WC_CONSUMER_KEY=ck_your_consumer_key
-- WC_CONSUMER_SECRET=cs_your_consumer_secret
+``` env
+ GOOGLE_API_KEY=your_google_api_key
+ WP_API_URL=http://ecomerce-agentic-ai.local/wp-json/wc/v3/products (add your local URL)
+ WC_CONSUMER_KEY=ck_your_consumer_key
+ WC_CONSUMER_SECRET=cs_your_consumer_secret
+ ```
 
 ## 3 Ensure your WooCommerce REST API keys have read access and WooCommerce is active.
+
+ Install WooCommerce plugin and create an **API key**:
+- Go to **WooCommerce → Settings → Advanced → REST API → Add Key**
+- User: Administrator
+- Permissions: Read/Write (or Read-only)
+- Copy `Consumer Key` and `Consumer Secret`
+
+## 4. Add the **temporary filter** for local API access in `functions.php` or a plugin:
+
+```php
+add_filter('woocommerce_rest_check_permissions', function($permission = false, $context = '', $object_id = 0, $post_type = '', $user_id = null, $cap = '') {
+ if (strpos($_SERVER['HTTP_HOST'], '.local') !== false) {
+     return true;
+ }
+ return $permission;
+}, 10, 6);
+
