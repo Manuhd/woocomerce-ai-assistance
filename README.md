@@ -1,46 +1,39 @@
-# WooCommerce API Local Integration
+# WooCommerce AI Product Assistant
 
-This project demonstrates fetching WooCommerce products from a **local WordPress environment** (`.local`) using Python. It is intended for **development and testing purposes**.
+A Python-based AI assistant that fetches product data from a WooCommerce store and answers user questions using **Google Gemini** via LangChain.
 
 ---
 
 ## Features
 
-- Fetch products from a WooCommerce local site.
-- Compatible with WooCommerce REST API v3.
-- Supports **query string authentication** for local development.
-- Temporary filter to allow API access on local `.local` sites without 401 errors.
-- Safe for local testing; does **not bypass permissions in production**.
+- Fetch products from WooCommerce using REST API.
+- Integrates with **LangChain** and **Google Gemini (Gemini-2.5)** for AI responses.
+- Interactive terminal assistant for answering product-related questions.
+- Handles product name, price, and description automatically.
+- Easy to configure with `.env` file.
 
 ---
 
 ## Prerequisites
 
-- WordPress installed locally (e.g., LocalWP, XAMPP, WAMP)
-- WooCommerce plugin installed and active
-- Python 3.x
-- `requests` Python library
+- Python 3.10+
+- WooCommerce store with **REST API enabled**
+- Google Cloud API key with access to Gemini
+- Libraries: `requests`, `python-dotenv`, `langchain-google-genai`, `langchain`
 
 ---
 
 ## Setup
+# 1 Install dependencies:
+`pip install -r requirements.txt`
 
-1. Clone this repository or download the files.
-2. Ensure your WordPress local site resolves correctly:
 
-3. Install WooCommerce plugin and create an **API key**:
-- Go to **WooCommerce → Settings → Advanced → REST API → Add Key**
-- User: Administrator
-- Permissions: Read/Write (or Read-only)
-- Copy `Consumer Key` and `Consumer Secret`
 
-4. Add the **temporary filter** for local API access in `functions.php` or a plugin:
+# 2 Create a .env file in the root:
 
-```php
-add_filter('woocommerce_rest_check_permissions', function($permission = false, $context = '', $object_id = 0, $post_type = '', $user_id = null, $cap = '') {
- if (strpos($_SERVER['HTTP_HOST'], '.local') !== false) {
-     return true;
- }
- return $permission;
-}, 10, 6);
+GOOGLE_API_KEY=your_google_api_key
+WP_API_URL=http://ecomerce-agentic-ai.local/wp-json/wc/v3/products
+WC_CONSUMER_KEY=ck_your_consumer_key
+WC_CONSUMER_SECRET=cs_your_consumer_secret
 
+## 3 Ensure your WooCommerce REST API keys have read access and WooCommerce is active.
