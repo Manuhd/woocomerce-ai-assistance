@@ -63,7 +63,7 @@ add_filter('woocommerce_rest_check_permissions', function($permission = false, $
 
 ### Run the AI assistant:
 
-`` python wootest.py ``
+`` python main.py ``
 
 
 ### Example interaction:
